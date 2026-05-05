@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% block title %}Authors{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>👥 Authors</h2>
+    <a href="{% url 'create_author' %}" class="btn btn-success">+ New Author</a>
+</div>
+
+{% if authors %}
+<div class="row">
+    {% for author in authors %}
+    <div class="col-md-4 mb-3">
+        <div class="card p-3">
+            <h5>{{ author.name }}</h5>
+            <p class="text-muted small">{{ author.email }}</p>
+            <p>{{ author.bio|truncatewords:15 }}</p>
+            <small class="text-muted">{{ author.posts.count }} post(s)</small>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+    <div class="alert alert-info">No authors yet. <a href="{% url 'create_author' %}">Add one!</a></div>
+{% endif %}
+{% endblock %}

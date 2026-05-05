@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% block title %}New Category{% endblock %}
+
+{% block content %}
+<div class="card p-4" style="max-width: 500px; margin: auto;">
+    <h2 class="mb-4"> Add a Category</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-warning mt-3">Save Category</button>
+        <a href="{% url 'category_list' %}" class="btn btn-outline-secondary mt-3">Cancel</a>
+    </form>
+</div>
+{% endblock %}

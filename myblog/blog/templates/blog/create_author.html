@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% block title %}New Author{% endblock %}
+
+{% block content %}
+<div class="card p-4" style="max-width: 600px; margin: auto;">
+    <h2 class="mb-4"> Add an Author</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success mt-3">Save Author</button>
+        <a href="{% url 'author_list' %}" class="btn btn-outline-secondary mt-3">Cancel</a>
+    </form>
+</div>
+{% endblock %}
