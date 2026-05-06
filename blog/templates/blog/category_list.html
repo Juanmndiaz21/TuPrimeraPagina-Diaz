@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2> Categorias</h2>
+    <a href="{% url 'create_category' %}" class="btn btn-warning">+ Nueva Categoria</a>
+</div>
+
+{% if categories %}
+    {% for category in categories %}
+    <div class="card mb-2 p-3">
+        <h5>{{ category.name }}</h5>
+        <p class="text-muted">{{ category.description }}</p>
+        <small>{{ category.posts.count }} post(s) en esta categoria</small>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="alert alert-info">No hay categorías aún. <a href="{% url 'create_category' %}">Agregar una!</a></div>
+{% endif %}
+{% endblock %}

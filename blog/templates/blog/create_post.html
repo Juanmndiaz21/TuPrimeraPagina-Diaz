@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Nuevo Posteo{% endblock %}
+
+{% block content %}
+<div class="card p-4" style="max-width: 700px; margin: auto;">
+    <h2 class="mb-4"> Crea un Nuevo Posteo</h2>
+
+
+    <form method="post" action="">
+
+        {% csrf_token %}
+
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary mt-3">Guardar Post</button>
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary mt-3">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
